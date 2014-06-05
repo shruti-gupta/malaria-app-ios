@@ -107,7 +107,24 @@
 
 -(void)pickerDoneClicked
 {
+    
+     BOOL isMedThere = [medicines containsObject: txt.text];
+    
     NSLog(@"Done Clicked");
+   
+    if(![txt.text isEqualToString:@""] && !isMedThere )
+    {
+        NSLog(@"Wrong medication entered");
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Medication Entered"
+                                                        message:@"You must enter a correct medication to continue"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+
+    else
     [txt resignFirstResponder];
 }
 
@@ -183,8 +200,12 @@
         [alert show];
     }
     
+   
+   
     
-    else{
+        
+    
+   else {
         [time setText:@"shruti"];
         [nextScreen setHidden:NO];
         [txt setHidden:YES];
