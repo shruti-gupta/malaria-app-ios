@@ -6,9 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PCMSetupScreenViewController">
             <connections>
+                <outlet property="background" destination="4KU-Rw-ytx" id="baN-hU-4jM"/>
                 <outlet property="done" destination="YVG-bb-ByH" id="7Ei-I4-hsR"/>
                 <outlet property="iTake" destination="gWV-iC-WaK" id="iQM-tr-wWD"/>
                 <outlet property="ifIFor" destination="8Uv-wf-5XC" id="U3r-Ym-W88"/>
+                <outlet property="logo" destination="Up2-qJ-cUf" id="jVc-tn-CG6"/>
                 <outlet property="remind" destination="G5x-lz-k9d" id="5mi-Hn-c0j"/>
                 <outlet property="setup" destination="GrP-eI-nTu" id="DsI-fr-86A"/>
                 <outlet property="time" destination="NCi-3z-3yY" id="rf4-sC-JVQ"/>
@@ -74,10 +76,20 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-Rw-ytx">
+                    <rect key="frame" x="-2" y="0.0" width="325" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Up2-qJ-cUf">
+                    <rect key="frame" x="155" y="376" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.7778131371" blue="0.34237247850000002" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="logo.png" width="90" height="90"/>
+    </resources>
 </document>
