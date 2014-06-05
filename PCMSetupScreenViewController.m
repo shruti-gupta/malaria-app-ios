@@ -28,7 +28,15 @@
 {
     [super viewDidLoad];
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
-
+    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    background.frame = self.view.bounds;
+    [[self view] addSubview:background];
+    [background.superview sendSubviewToBack:background];
+    //logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
+    //logo.frame = self.view.bounds;
+	 //[[self view] addSubview:logo];
+    
+    
     // Do any additional setup after loading the view from its nib.
     medicines = [NSArray arrayWithObjects:@"Doxycycline",@"Malarone",@"Mefloquine", nil];
     UIPickerView *medPicker = [[UIPickerView alloc]initWithFrame:CGRectZero];

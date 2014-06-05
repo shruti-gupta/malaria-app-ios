@@ -20,6 +20,8 @@
     IBOutlet UILabel *ifIFor;
     IBOutlet UILabel *remind;
     IBOutlet UILabel *setup;
+    IBOutlet UIImageView *background;
+    IBOutlet UIImageView *logo;
     
 }
 

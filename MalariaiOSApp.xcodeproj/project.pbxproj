@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1395BD01940979C0077E05F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D1395BD21940979C0077E05F /* background.png */; };
+		D1395BD4194099780077E05F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D1395BD3194099780077E05F /* background.png */; };
+		D1395BD619409AA20077E05F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D1395BD519409AA20077E05F /* logo.png */; };
 		D1BE3E58193F85AE007E692D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E57193F85AE007E692D /* Foundation.framework */; };
 		D1BE3E5A193F85AE007E692D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E59193F85AE007E692D /* CoreGraphics.framework */; };
 		D1BE3E5C193F85AE007E692D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E5B193F85AE007E692D /* UIKit.framework */; };
@@ -34,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D1395BD11940979C0077E05F /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/background.png; sourceTree = "<group>"; };
+		D1395BD3194099780077E05F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		D1395BD519409AA20077E05F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D1BE3E54193F85AE007E692D /* MalariaiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MalariaiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BE3E57193F85AE007E692D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D1BE3E59193F85AE007E692D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +88,8 @@
 		D1BE3E4B193F85AE007E692D = {
 			isa = PBXGroup;
 			children = (
+				D1395BD519409AA20077E05F /* logo.png */,
+				D1395BD3194099780077E05F /* background.png */,
 				D1BE3E86193F85C4007E692D /* PCMSetupScreenViewController.h */,
 				D1BE3E87193F85C4007E692D /* PCMSetupScreenViewController.m */,
 				D1BE3E88193F85C4007E692D /* PCMSetupScreenViewController.xib */,
@@ -115,6 +123,7 @@
 		D1BE3E5D193F85AE007E692D /* MalariaiOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				D1395BD21940979C0077E05F /* background.png */,
 				D1BE3E66193F85AE007E692D /* PCMAppDelegate.h */,
 				D1BE3E67193F85AE007E692D /* PCMAppDelegate.m */,
 				D1BE3E69193F85AE007E692D /* Images.xcassets */,
@@ -231,6 +240,9 @@
 				D1BE3E8A193F85C4007E692D /* PCMSetupScreenViewController.xib in Resources */,
 				D1BE3E62193F85AE007E692D /* InfoPlist.strings in Resources */,
 				D1BE3E6A193F85AE007E692D /* Images.xcassets in Resources */,
+				D1395BD619409AA20077E05F /* logo.png in Resources */,
+				D1395BD4194099780077E05F /* background.png in Resources */,
+				D1395BD01940979C0077E05F /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +286,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D1395BD21940979C0077E05F /* background.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1395BD11940979C0077E05F /* en */,
+			);
+			name = background.png;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D1BE3E60193F85AE007E692D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -448,6 +469,7 @@
 				D1BE3E82193F85AE007E692D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1BE3E83193F85AE007E692D /* Build configuration list for PBXNativeTarget "MalariaiOSAppTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +478,7 @@
 				D1BE3E85193F85AE007E692D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
