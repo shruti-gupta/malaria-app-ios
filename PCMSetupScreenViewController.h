@@ -22,6 +22,9 @@
     IBOutlet UILabel *setup;
     IBOutlet UIImageView *background;
     IBOutlet UIImageView *logo;
+    IBOutlet UILabel *medWarning;
+    IBOutlet UILabel *timeWarning;
+    NSDate *currentTime;
     
 }
 
