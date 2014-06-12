@@ -7,8 +7,11 @@
 //
 
 #import "PCMSetupScreenViewController.h"
+#define kOFFSET_FOR_KEYBOARD 80.0
+#import "PCMAppViewController.h"
 
-@interface PCMSetupScreenViewController ()
+
+@interface PCMSetupScreenViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -18,26 +21,30 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+   
     if (self) {
         // Custom initialization
     }
     return self;
 }
 
+
+
 - (void)viewDidLoad
 {
+    
+    //Set the background image
+    
     [super viewDidLoad];
-    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
     background.frame = self.view.bounds;
     [[self view] addSubview:background];
     [background.superview sendSubviewToBack:background];
-    //logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]];
-    //logo.frame = self.view.bounds;
-	 //[[self view] addSubview:logo];
+   
     
     
-    // Do any additional setup after loading the view from its nib.
+    //Code for the medicines Picker
+    
     medicines = [NSArray arrayWithObjects:@"Doxycycline",@"Malarone",@"Mefloquine", nil];
     UIPickerView *medPicker = [[UIPickerView alloc]initWithFrame:CGRectZero];
     medPicker.delegate = self;
@@ -47,6 +54,7 @@
     
     
     //Create done button in UIPickerView
+    
     UIToolbar* myPickerToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 56)];
     myPickerToolbar.barStyle = UIBarStyleBlackOpaque;
     [myPickerToolbar sizeToFit];
@@ -59,21 +67,18 @@
     [myPickerToolbar setItems:barItems animated:YES];
     txt.inputAccessoryView = myPickerToolbar;
     
+   
+    //Code for the date picker
     
     self->datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-    // self->datePicker.frame = CGRectMake(0, 0, self.view.frame.size.width, 180.0f); // set frame as your need
     self->datePicker.datePickerMode = UIDatePickerModeTime;
-    //[self.view addSubview: self->datePicker];
     time.inputView = datePicker;
     [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    //UILabel  * label1 = [[UILabel alloc] initWithFrame:CGRectMake(40, 70, 300, 50)];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-    NSString *currentTime = [dateFormatter stringFromDate:self->datePicker.date];
-    // time.text = currentTime;
     [self.view addSubview:time];
     
+    //Done Button in Date Picker
     
     UIToolbar* myDatePickerToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 56)];
     myDatePickerToolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -87,51 +92,107 @@
     [myDatePickerToolbar setItems:barItems1 animated:YES];
     time.inputAccessoryView = myDatePickerToolbar;
     
-    
+   
 }
+
+//Function to select date from the date picker
 
 - (void)dateChanged:(id)sender
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-    NSString *currentTime = [dateFormatter stringFromDate:self->datePicker.date];
-    NSLog(@"%@", currentTime);
-    
-    time.text = currentTime;
-    
-    
-    //[self->datePicker setHidden:YES];
+    self->currentTime = self->datePicker.date;
+    NSString *currentTimeString = [dateFormatter stringFromDate:currentTime];
+    time.text = currentTimeString;
     
 }
 
+//Done Button Function for medicine picker
 
 -(void)pickerDoneClicked
 {
     
-     BOOL isMedThere = [medicines containsObject: txt.text];
+    if([txt.text  isEqual: @""])
+        {
+            NSLog(@"No medication entered");
+            [medWarning setHidden:NO];
+            [medWarning setText:@"Medication not entered"];
+        }
     
-    NSLog(@"Done Clicked");
-   
-    if(![txt.text isEqualToString:@""] && !isMedThere )
-    {
-        NSLog(@"Wrong medication entered");
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Wrong Medication Entered"
-                                                        message:@"You must enter a correct medication to continue"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
+    BOOL isMedThere = [medicines containsObject: txt.text];
+        
+       
+        
+    if(![txt.text isEqualToString:@""] && !isMedThere )
+        {
+            [medWarning setHidden:NO];
+            [medWarning setText:@"Wrong Medication entered"];
+            
 
-    else
+        }
+        
+        
+    isMedThere = [medicines containsObject: txt.text];
+        
+        
+        
+    if(![txt.text isEqualToString:@""] && isMedThere )
+        {
+            [medWarning setHidden:YES];
+
+        }
+        
+
+    
+    isMedThere = [medicines containsObject: txt.text];
+    
+    if(![txt.text isEqualToString:@""] && ![time.text isEqualToString:@""] && isMedThere)
+        {
+            [done setEnabled:YES];
+        }
+    
     [txt resignFirstResponder];
+
+
 }
+
+
 
 -(void)datePickerDoneClicked
 {
     NSLog(@"Done Clicked");
+    
+    
+  
+    
+    if([time.text isEqual: @""])
+    {
+        
+    
+        
+        [timeWarning setHidden:NO];
+        [timeWarning setText:@"Continuing with current time"];
+        
+        
+        self->currentTime = [NSDate date];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"hh:mm";
+        [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+        [time setText:[dateFormatter stringFromDate:self->currentTime]];
+        
+        
+    }
     [time resignFirstResponder];
+    
+    if(![txt.text isEqualToString:@""] && ![time.text isEqualToString:@""])
+    {
+        //[timeWarning setHidden:YES];
+        [done setEnabled:YES];
+        //[timeWarning setHidden:YES];
+    }
+
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView*)pickerView
@@ -167,46 +228,27 @@
 -(IBAction)done:(id)sender
 {
     
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"EEEE"];
     
-    if([time.text isEqual: @""])
-    {
-        
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time Not Entered"
-                                                        message:@"Continuing with current time"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        
-        NSDate *now = [NSDate date];
-        
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        dateFormatter.dateFormat = @"hh:mm";
-        [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-        [time setText:[dateFormatter stringFromDate:now]];
-    }
+    NSString *medicine = txt.text;
+    NSString *remindTime = time.text;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:medicine forKey:@"medicineName"];
+    [[NSUserDefaults standardUserDefaults] setObject:remindTime forKey:@"reminderTime"];
+    [[NSUserDefaults standardUserDefaults] setObject:currentTime forKey:@"startDay"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    PCMAppViewController *tPT1VC = [[PCMAppViewController alloc] init];
     
     
-    if([txt.text  isEqual: @""])
-    {
-        NSLog(@"No medication entered");
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Medication Not Entered"
-                                                        message:@"You must select a medication to continue"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-    }
-    
+    [self presentModalViewController:tPT1VC animated:YES];
    
-   
+
+
     
-        
-    
-   else {
-        [time setText:@"shruti"];
+        /*[time setText:@"shruti"];
         [nextScreen setHidden:NO];
         [txt setHidden:YES];
         [time setHidden:YES];
@@ -215,6 +257,88 @@
         [ifIFor setHidden:YES];
         [setup setHidden:YES];
         [done setHidden:YES];
+        [timeWarning setHidden:YES];*/
+    
+}
+
+
+-(void)keyboardWillShow {
+    // Animate the current view out of the way
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
     }
 }
+
+-(void)keyboardWillHide {
+    if (self.view.frame.origin.y >= 0)
+    {
+        [self setViewMovedUp:YES];
+    }
+    else if (self.view.frame.origin.y < 0)
+    {
+        [self setViewMovedUp:NO];
+    }
+}
+
+
+//method to move the view up/down whenever the keyboard is shown/dismissed
+-(void)setViewMovedUp:(BOOL)movedUp
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3]; // if you want to slide up the view
+    
+    CGRect rect = self.view.frame;
+    if (movedUp)
+    {
+        // 1. move the view's origin up so that the text field that will be hidden come above the keyboard
+        // 2. increase the size of the view so that the area behind the keyboard is covered up.
+        rect.origin.y -= kOFFSET_FOR_KEYBOARD;
+        rect.size.height += kOFFSET_FOR_KEYBOARD;
+    }
+    else
+    {
+        // revert back to the normal state.
+        rect.origin.y += kOFFSET_FOR_KEYBOARD;
+        rect.size.height -= kOFFSET_FOR_KEYBOARD;
+    }
+    self.view.frame = rect;
+    
+    [UIView commitAnimations];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
+
+
 @end

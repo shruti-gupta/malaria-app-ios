@@ -8,6 +8,8 @@
 
 #import "PCMAppDelegate.h"
 #import "PCMSetupScreenViewController.h"
+#import "PCMTPTpage1ViewController.h"
+#import "PCMAppViewController.h"
 
 @implementation PCMAppDelegate
 
@@ -15,8 +17,34 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    PCMSetupScreenViewController *setupVC = [[PCMSetupScreenViewController alloc] init];
-    self.window.rootViewController = setupVC;
+
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        // app already launched
+        
+       /* PCMTPTpage1ViewController *tPT1VC = [[PCMTPTpage1ViewController alloc] init];
+        self.window.rootViewController = tPT1VC;
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        */
+        
+        PCMAppViewController *tPT1VC = [[PCMAppViewController alloc] init];
+        self.window.rootViewController = tPT1VC;
+        
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        
+        PCMSetupScreenViewController *setupVC = [[PCMSetupScreenViewController alloc] init];
+        self.window.rootViewController = setupVC;
+
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        // This is the first launch ever
+    }
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
