@@ -14,6 +14,11 @@
 		D1997F7C194767CF00F66419 /* PCMTPTpage1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1997F7A194767CF00F66419 /* PCMTPTpage1ViewController.xib */; };
 		D1997F8019480C2B00F66419 /* PCMAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1997F7E19480C2B00F66419 /* PCMAppViewController.m */; };
 		D1997F8119480C2B00F66419 /* PCMAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1997F7F19480C2B00F66419 /* PCMAppViewController.xib */; };
+		D19CA141194FE1E30055DEC0 /* button_no.png in Resources */ = {isa = PBXBuildFile; fileRef = D19CA13C194FE1E30055DEC0 /* button_no.png */; };
+		D19CA142194FE1E30055DEC0 /* button_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = D19CA13D194FE1E30055DEC0 /* button_yes.png */; };
+		D19CA143194FE1E30055DEC0 /* tab_home.png in Resources */ = {isa = PBXBuildFile; fileRef = D19CA13E194FE1E30055DEC0 /* tab_home.png */; };
+		D19CA144194FE1E30055DEC0 /* button_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D19CA13F194FE1E30055DEC0 /* button_settings.png */; };
+		D19CA145194FE1E30055DEC0 /* tab_infohub.png in Resources */ = {isa = PBXBuildFile; fileRef = D19CA140194FE1E30055DEC0 /* tab_infohub.png */; };
 		D1BE3E58193F85AE007E692D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E57193F85AE007E692D /* Foundation.framework */; };
 		D1BE3E5A193F85AE007E692D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E59193F85AE007E692D /* CoreGraphics.framework */; };
 		D1BE3E5C193F85AE007E692D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1BE3E5B193F85AE007E692D /* UIKit.framework */; };
@@ -51,6 +56,11 @@
 		D1997F7D19480C2B00F66419 /* PCMAppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMAppViewController.h; sourceTree = "<group>"; };
 		D1997F7E19480C2B00F66419 /* PCMAppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMAppViewController.m; sourceTree = "<group>"; };
 		D1997F7F19480C2B00F66419 /* PCMAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PCMAppViewController.xib; sourceTree = "<group>"; };
+		D19CA13C194FE1E30055DEC0 /* button_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_no.png; sourceTree = "<group>"; };
+		D19CA13D194FE1E30055DEC0 /* button_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_yes.png; sourceTree = "<group>"; };
+		D19CA13E194FE1E30055DEC0 /* tab_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_home.png; sourceTree = "<group>"; };
+		D19CA13F194FE1E30055DEC0 /* button_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_settings.png; sourceTree = "<group>"; };
+		D19CA140194FE1E30055DEC0 /* tab_infohub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_infohub.png; sourceTree = "<group>"; };
 		D1BE3E54193F85AE007E692D /* MalariaiOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MalariaiOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1BE3E57193F85AE007E692D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D1BE3E59193F85AE007E692D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -100,6 +110,11 @@
 		D1BE3E4B193F85AE007E692D = {
 			isa = PBXGroup;
 			children = (
+				D19CA13C194FE1E30055DEC0 /* button_no.png */,
+				D19CA13D194FE1E30055DEC0 /* button_yes.png */,
+				D19CA13E194FE1E30055DEC0 /* tab_home.png */,
+				D19CA13F194FE1E30055DEC0 /* button_settings.png */,
+				D19CA140194FE1E30055DEC0 /* tab_infohub.png */,
 				D1F738A41940B69200F7C7C2 /* DoneButtonInverted.png */,
 				D1997F78194767CF00F66419 /* PCMTPTpage1ViewController.h */,
 				D1997F79194767CF00F66419 /* PCMTPTpage1ViewController.m */,
@@ -256,8 +271,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D19CA144194FE1E30055DEC0 /* button_settings.png in Resources */,
+				D19CA141194FE1E30055DEC0 /* button_no.png in Resources */,
 				D1BE3E8A193F85C4007E692D /* PCMSetupScreenViewController.xib in Resources */,
 				D1BE3E62193F85AE007E692D /* InfoPlist.strings in Resources */,
+				D19CA145194FE1E30055DEC0 /* tab_infohub.png in Resources */,
 				D1997F8119480C2B00F66419 /* PCMAppViewController.xib in Resources */,
 				D1F738A51940B69200F7C7C2 /* DoneButtonInverted.png in Resources */,
 				D1997F7C194767CF00F66419 /* PCMTPTpage1ViewController.xib in Resources */,
@@ -265,6 +283,8 @@
 				D1395BD619409AA20077E05F /* logo.png in Resources */,
 				D1395BD4194099780077E05F /* background.png in Resources */,
 				D1395BD01940979C0077E05F /* background.png in Resources */,
+				D19CA142194FE1E30055DEC0 /* button_yes.png in Resources */,
+				D19CA143194FE1E30055DEC0 /* tab_home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

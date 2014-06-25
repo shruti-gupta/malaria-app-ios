@@ -17,7 +17,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-
+    
+    
+    
+    
+    _navigationController = [[UINavigationController alloc] init];
+    
+    [_navigationController setNavigationBarHidden:YES];
+    
+    self.window.rootViewController = _navigationController;
+    
+    
+    
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
@@ -30,8 +41,10 @@
         */
         
         PCMAppViewController *tPT1VC = [[PCMAppViewController alloc] init];
-        self.window.rootViewController = tPT1VC;
         
+        //self.window.rootViewController = tPT1VC;
+        
+        [_navigationController pushViewController:tPT1VC animated:YES];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }
@@ -40,7 +53,10 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         
         PCMSetupScreenViewController *setupVC = [[PCMSetupScreenViewController alloc] init];
-        self.window.rootViewController = setupVC;
+        //self.window.rootViewController = setupVC;
+        
+        
+        [_navigationController pushViewController:setupVC animated:YES];
 
         [[NSUserDefaults standardUserDefaults] synchronize];
         // This is the first launch ever

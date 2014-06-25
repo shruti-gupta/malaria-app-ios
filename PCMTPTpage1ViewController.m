@@ -8,6 +8,7 @@
 
 #import "PCMTPTpage1ViewController.h"
 #import <objc/runtime.h>
+#import "PCMSetupScreenViewController.h"
 
 @interface PCMTPTpage1ViewController ()
 
@@ -45,16 +46,25 @@
     //self->reminderDate = startDay;
     
     self->reminderDate = [[NSDate alloc] initWithTimeInterval:0 sinceDate:startDay];
+    self->frequency = [self determineMedFrequency:medName.lowercaseString];
+    
+    if(self->frequency == 1)
+    {
+        //daily
+        [self updateLabel:[NSDate date]];
+        
+    }
     
     //Function to update label with arguments reminderdate
-    
+    else
+    {
     
     [self updateLabel:self->reminderDate];
     
     
 
     [self changeLabelColor:reminderDate givenFrequency:frequency];
-    
+    }
     
     
     //[[NSUserDefaults standardUserDefaults] setObject:rDate1 forKey:@"reminderTime"];
@@ -84,6 +94,8 @@
     
     self->frequency = [self determineMedFrequency:medName.lowercaseString];
     //self->rDate = startDay;
+    
+    
     
     self->reminderDate = [[self getrDate:frequency] dateByAddingTimeInterval:0];
     [dateFormat setDateFormat:@"EEEE"];
@@ -172,12 +184,12 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSDate*) getrDate: (NSInteger) frequency
+-(NSDate*) getrDate: (NSInteger) mfrequency
 {
     NSDate *today = [NSDate date];
    
     //&& [rDate compare:today] == NSOrderedDescending
-    if(frequency == 1 && ([self->reminderDate compare:today] == NSOrderedAscending||[self->reminderDate compare:today]==NSOrderedSame)&&(medTaken == 1||medTaken == 2))
+    if(mfrequency == 1 && ([self->reminderDate compare:today] == NSOrderedAscending||[self->reminderDate compare:today]==NSOrderedSame)&&(medTaken == 1||medTaken == 2))
     {
         //daily
         //get next date
@@ -185,7 +197,7 @@
         self->reminderDate = [self->reminderDate dateByAddingTimeInterval:+1*24*60*60];
     }
     
-    if(frequency == 0 && [self->reminderDate compare:today] == NSOrderedAscending)
+    if(mfrequency == 0 && [self->reminderDate compare:today] == NSOrderedAscending)
     {
         //weekly
         //today>=rDate or medicine has been taken
@@ -214,6 +226,17 @@
 {
     self.screenNumber.text = [NSString stringWithFormat:@"Screen #%d", self.index];
     
+}
+
+-(IBAction)settings:(id)sender
+{
+   PCMSetupScreenViewController  *setupVC = [[PCMSetupScreenViewController alloc] init];
+    
+    
+    // [self presentModalViewController:tPT1VC animated:YES];
+    
+    [self.navigationController pushViewController:setupVC animated:YES];
+
 }
 
 

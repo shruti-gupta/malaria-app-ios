@@ -39,8 +39,39 @@
     background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
     background.frame = self.view.bounds;
     [[self view] addSubview:background];
+    
     [background.superview sendSubviewToBack:background];
+    
+    collect.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+    
+   // background1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    //background1.frame = self.view.bounds;
+    //[[self view] addSubview:background1];
+    //[collect addSubview:background1];
+    //[background1.superview sendSubviewToBack:background1];
+
    
+   self->prefs = [NSUserDefaults standardUserDefaults];
+    
+    self->medName = [prefs stringForKey:@"medicineName"];
+    self->startDay = [prefs objectForKey:@"startDay"];
+    if(![self->medName isEqualToString:@""]&& self->startDay)
+    {
+        NSLog(@"Inside view DidLoad");
+        txt.text = self->medName;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        NSString *currentTimeString = [dateFormatter stringFromDate:self->startDay];
+
+        time.text = currentTimeString;
+        [done setEnabled:YES];
+    }
+    
+    
+    
+    
+    
+
     
     
     //Code for the medicines Picker
@@ -76,7 +107,7 @@
     [datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"hh:mm a"];
-    [self.view addSubview:time];
+    //[self.view addSubview:time];
     
     //Done Button in Date Picker
     
@@ -234,18 +265,18 @@
     
     NSString *medicine = txt.text;
     NSString *remindTime = time.text;
-    
+    self->startDay = [date dateByAddingTimeInterval:0];
     [[NSUserDefaults standardUserDefaults] setObject:medicine forKey:@"medicineName"];
     [[NSUserDefaults standardUserDefaults] setObject:remindTime forKey:@"reminderTime"];
-    [[NSUserDefaults standardUserDefaults] setObject:currentTime forKey:@"startDay"];
+    [[NSUserDefaults standardUserDefaults] setObject:date forKey:@"startDay"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     PCMAppViewController *tPT1VC = [[PCMAppViewController alloc] init];
     
     
-    [self presentModalViewController:tPT1VC animated:YES];
+   // [self presentModalViewController:tPT1VC animated:YES];
    
-
+    [self.navigationController pushViewController:tPT1VC animated:YES];
 
     
         /*[time setText:@"shruti"];
@@ -337,8 +368,42 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
+     
+     
                                                   object:nil];
 }
 
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+    //Set the background image
+    
+    //[super viewDidLoad];
+    NSLog(@"Inside view DidAppear");
+    background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
+    background.frame = self.view.bounds;
+    [[self view] addSubview:background];
+    [background.superview sendSubviewToBack:background];
+    
+    //NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    //self->medName = [self->prefs stringForKey:@"medicineName"];
+    //NSDate *startDay = [self->prefs objectForKey:@"startDay"];
+    NSLog(@"shruti");
+    NSLog(self->medName);
+    if(![self->medName isEqualToString:@""])
+    {
+        NSLog(@"Inside if statement");
+        txt.text = self->medName;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        NSString *currentTimeString = [dateFormatter stringFromDate:self->startDay];
+        
+        time.text = currentTimeString;
+        [done setEnabled:YES];
+    }
+}
 
 @end
