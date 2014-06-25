@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>047A66ED-7BBB-447C-B9BD-131EBD30F181</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MalariaiOSApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B25A0A0E-6CDC-4D8F-B2AC-089B170E0AEC</key>
+		<string>https://github.com/shruti-gupta/malaria-app-ios</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MalariaiOSApp.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B25A0A0E-6CDC-4D8F-B2AC-089B170E0AEC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/shruti-gupta/malaria-app-ios</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B25A0A0E-6CDC-4D8F-B2AC-089B170E0AEC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B25A0A0E-6CDC-4D8F-B2AC-089B170E0AEC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MalariaiOSApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
